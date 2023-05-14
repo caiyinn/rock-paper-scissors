@@ -55,24 +55,38 @@ const tie = (userMove, computerMove) => {
 
 const game = (userMove) => {
     // console.log("user move: " + userMove);
+    const winningConditions = {
+        rock: "scissors",
+        paper: "rock",
+        scissors: "paper"
+    };
     let computerMove = randomMove();
-    switch (userMove + computerMove){
-        case "rockscissors":
-        case "paperrock":
-        case "scissorspaper":
-            win(userMove, computerMove);
-            break;
-        case "rockpaper":
-        case "paperscissors":
-        case "scissorsrock":
-            lose(userMove, computerMove);
-            break;
-        case "rockrock":
-        case "paperpaper":
-        case "scissorsscissors":
-            tie(userMove, computerMove);
-            break;
+    if (userMove === computerMove){
+        tie(userMove, computerMove);
     }
+    else if (winningConditions[userMove] === computerMove){
+        win(userMove, computerMove);
+    }
+    else {
+        lose(userMove, computerMove);
+    }
+    // switch (userMove + computerMove){
+    //     case "rockscissors":
+    //     case "paperrock":
+    //     case "scissorspaper":
+    //         win(userMove, computerMove);
+    //         break;
+    //     case "rockpaper":
+    //     case "paperscissors":
+    //     case "scissorsrock":
+    //         lose(userMove, computerMove);
+    //         break;
+    //     case "rockrock":
+    //     case "paperpaper":
+    //     case "scissorsscissors":
+    //         tie(userMove, computerMove);
+    //         break;
+    // }
 }
 
 function main(){
